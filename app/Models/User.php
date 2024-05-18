@@ -22,6 +22,7 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'google_id'
     ];
 
     /**
@@ -32,6 +33,8 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password',
         'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
     ];
 
     /**
@@ -63,4 +66,14 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+    /**
+ * Get the password for the user.
+ *
+ * @return string
+ */
+public function getAuthPassword()
+{
+    return $this->password;
+}
+
 }
